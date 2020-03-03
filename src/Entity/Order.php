@@ -17,19 +17,45 @@ class Order
      */
     private $id;
 
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $marketplace;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $created_at;
+
     public function getId(): ?string
     {
         return $this->id;
-    }
-
-	public function setId($id){
-		$this->id = $id;
     }
     
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Product", mappedBy="order")
      */
     private $produits;
+
+	public function setId($id){
+		$this->id = $id;
+    }
+    
+    public function getMarketplace(){
+		return $this->marketplace;
+	}
+
+	public function setMarketplace($marketplace){
+		$this->marketplace = $marketplace;
+	}
+
+	public function getCreated_at(){
+		return $this->created_at;
+	}
+
+	public function setCreated_at($created_at){
+		$this->created_at = $created_at;
+    }
 
     /**
      * @return Collection|Produit[]
